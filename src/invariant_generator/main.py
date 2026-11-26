@@ -20,7 +20,7 @@ Requirements:
 - Invariants must be strong enough to help prove the method's postconditions
 - Do not introduce unnecessary or redundant invariants
 - Use quantified expressions when they clearly express properties of processed array or sequence elements
-- Return only the generated invariant clauses
+- Return code with generated invariants included
 - Do not include explanations or Markdown code blocks"""
 
 USER_PROMPT = """Generate loop invariants for the following Dafny method.

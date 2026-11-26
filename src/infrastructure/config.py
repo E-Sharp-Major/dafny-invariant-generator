@@ -7,9 +7,9 @@ from domain import ConfigError, GenParams
 from domain.models import ProviderConfig
 
 DEFAULT_PROVIDER = "lmstudio"
-DEFAULT_DAFNY_PATH = "dafny"
+DEFAULT_DAFNY_PATH = r"D:\Programs\dafny\Dafny.exe"
 DEFAULT_MAX_REPAIR_ITERATIONS = 3
-DEFAULT_TIMEOUT = 120.0
+DEFAULT_TIMEOUT = 600.0
 DEFAULT_TTL = 300
 DEFAULT_TEMPERATURE = 0.2
 

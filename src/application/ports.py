@@ -3,6 +3,7 @@ from collections.abc import Sequence
 from typing import ClassVar
 
 from domain import GenParams, Message, ModelInfo, ProviderConfig
+from domain.models import VerificationResult
 
 
 class ModelCatalog(ABC):
@@ -17,7 +18,7 @@ class LLMClient(ABC):
 
     Declaring ``class MyClient(LLMClient, name="my-provider")`` registers the
     class under that name. Classes without ``name`` (intermediate bases) are
-    not registered.
+    not registered
     """
 
     name: ClassVar[str]
@@ -56,3 +57,14 @@ class LLMClient(ABC):
     def catalog(self) -> ModelCatalog | None:
         """Model catalog if the provider has one; None otherwise (preflight is skipped)"""
         return None
+
+class Verifier(ABC):
+    @abstractmethod
+    def verify(self, source: str) -> VerificationResult:
+        """Check a Dafny program.
+        
+        A program that does not verify, including syntax errors and timeouts, is
+        a normal result: ok is False and errors holds one entry per diagnostic,
+        with locations relative to ``source``. Raises ``InfrastructureError``
+        only when the verifier itself cannot run, e.g. ``DafnyNotFoundError``
+        """

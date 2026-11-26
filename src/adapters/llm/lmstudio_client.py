@@ -23,7 +23,7 @@ class LMStudioClient(LLMClient, name="lmstudio"):
     """LM Studio through its OpenAI-compatible chat API.
 
     LM Studio specifics live here and nowhere else: the ``ttl`` field that
-    limits how long a JIT-loaded model stays in VRAM, and the model catalog.
+    limits how long a JIT-loaded model stays in VRAM, and the model catalog
     """
 
     def __init__(self, base_url: str, api_key: str, timeout: float) -> None:
